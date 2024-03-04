@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form id="surveyForm" action="/submit" method="POST">
+
+    <!-- Question 1 -->
+    <div class="question">
+        <div class="q-title">Question 1/5</div>
+        <a href="https://uozone2.uottawa.ca/" target="_blank">
+            <img src="pics/uozone-homepage.png" alt="Website Screenshot">
+        </a>
+            <label>How satisfied are you with the current design?</label>
+            <div class="option">
+                <input type="radio" id="option1" name="singleChoice1" value="Very Satisfied">
+                <label for="option1">Very Satisfied</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="option2" name="singleChoice1" value="Satisfied">
+                <label for="option2">Satisfied</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="option3" name="singleChoice1" value="Neutral">
+                <label for="option3">Neutral</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="option4" name="singleChoice1" value="Dissatisfied">
+                <label for="option4">Dissatisfied</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="option5" name="singleChoice1" value="Very Dissatisfied">
+                <label for="option5">Very Dissatisfied</label>
+            </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+        <div class="q-title">Question 2/5</div>
+            <label for="textQuestion">When launching the uoZone homepage, what would you like to see?</label>
+            <input type="text" id="textQuestion" name="textQuestion" placeholder="Enter your answer">
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+        <div class="q-title">Question 3/5</div>
+        <a href="https://uozone2.uottawa.ca/apps" target="_blank">
+            <img src="pics/uozone-applications.png" alt="Website Screenshot">
+        </a>
+            <label>In the "Applications" tab, how would you like to sort your applications:</label>
+            <div class="option">
+                <input type="radio" id="option1" name="singleChoice2" value="Option 1">
+                <label for="option1">Most recently used</label>
+            </div>
+            
+            <div class="option">
+                <input type="radio" id="option2" name="singleChoice2" value="Option 2">
+                <label for="option2">Alphabetically A-Z</label>
+            </div>
+        
+            <div class="option">
+                <input type="radio" id="option3" name="singleChoice2" value="Option 2">
+                <label for="option3">Pin favorites at the top of the list</label>
+            </div>
+        
+            <div class="option">
+                <input type="radio" id="option4" name="singleChoice2" value="Option 2">
+                <label for="option4">Most accessed applications</label>
+            </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+        <div class="q-title">Question 4/5</div>
+        <div class="container">
+            <img class="img" id="img" src="pics/uozone-homepage.png" style="width:100%">
+            <button class="prev" onClick="myFunction(-1)"></button>
+            <button class="next" onclick="myFunction(1)"></button>
+        </div>
+            <label for="checkboxQuestion">What pages do you most commonly use in uoZone?</label>
+            <div class="option">
+                <input type="checkbox" id="checkbox1" name="selection[]" value="Option 1">
+                <label for="checkbox1">Home</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="checkbox2" name="selection[]" value="Option 2">
+                <label for="checkbox2">Services for you</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="checkbox3" name="selection[]" value="Option 3">
+                <label for="checkbox2">Academics and courses</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="checkbox4" name="selection[]" value="Option 4">
+                <label for="checkbox2">Finances and jobs</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="checkbox5" name="selection[]" value="Option 5">
+                <label for="checkbox2">Applications</label>
+            </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+        <div class="q-title">Question 5/5</div>
+        <label for="comments">Do you have any other comments?</label>
+        <textarea id="comments" name="comments" placeholder="Write your comments here"></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="navigation">
+        <button type="submit" id="submitBtn">Submit</button>
+    </div>
+
+    </form>
+
+    <p class="signature">Website designed by Zanou Rih, Looti Kris, and Jenson Wu</p>
+
+    <script src="action.js"></script>
+
+    <script>
+        // JavaScript for handling form submission and navigation
+
+        // Function to handle form submission
+        function submitForm() {
+            event.preventDefault();
+            // You can add code here to handle form submission, like sending data to the server via AJAX
+            // For simplicity, let's just navigate to the next question
+            window.location.href = 'submit.html'; // Redirect to submission page
+        }
+
+        // Attach event listener to the submit button
+        document.getElementById('submitBtn').addEventListener('click', submitForm);
+        // Function to handle image navigation in Question 4
+        var index = 0;
+        function myFunction(i) {
+            const pics = ["pics/uozone-homepage.png", "pics/uozone-services.png", "pics/uozone-academics.png","pics/uozone-finances.png", "pics/uozone-applications.png"]
+            index = index + i;
+            if(index == -1){
+                index = 4
+            } else if(index == 5){
+                index = 0
+            }
+            document.getElementById("img").src = pics[index];
+        }
+    </script>
+
+</body>
+</html>
